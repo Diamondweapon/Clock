@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vana'diel Weather Clock</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scene-backdrop active" id="backdropA" aria-hidden="true"></div>
+  <div class="scene-backdrop" id="backdropB" aria-hidden="true"></div>
+  <main class="widget" aria-label="Final Fantasy XI weather and time clock">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Final Fantasy XI</p>
+        <h1>Vana'diel Clock</h1>
+      </div>
+      <div class="hero-actions">
+        <button class="icon-button" id="settingsToggle" type="button" aria-label="Open settings" title="Settings">⚙</button>
+        <div class="crystal" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="settings-panel" id="settingsPanel" aria-label="Clock settings" hidden>
+      <label for="zipInput">
+        <span class="label">ZIP Code</span>
+        <input id="zipInput" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="10" placeholder="27513">
+      </label>
+      <div class="settings-actions">
+        <button id="saveSettings" type="button">Save</button>
+        <button id="clearSettings" type="button">Use Device</button>
+      </div>
+      <p id="settingsStatus" class="settings-status">Enter a ZIP code to show Earth time for that time zone.</p>
+    </section>
+
+    <section class="time-panel">
+      <div class="time-block">
+        <span class="label">Vana'diel Time</span>
+        <strong id="vanaTime">--:--</strong>
+        <span id="vanaDate" class="subtle">Loading...</span>
+      </div>
+      <div class="day-orb" id="dayOrb" aria-hidden="true"></div>
+    </section>
+
+    <section class="details-grid">
+      <article>
+        <span class="label">Game Day</span>
+        <strong id="vanaDay">--</strong>
+      </article>
+      <article>
+        <span class="label">Current Element</span>
+        <strong id="currentElement">--</strong>
+      </article>
+      <article>
+        <span class="label">Moon</span>
+        <strong id="moonPhase">--</strong>
+      </article>
+      <article>
+        <span class="label">Earth Time</span>
+        <strong id="earthTime">--:--</strong>
+        <span id="earthZone" class="mini-zone">Local time</span>
+      </article>
+      <article>
+        <span class="label">Speed</span>
+        <strong>25x</strong>
+      </article>
+    </section>
+
+    <section class="weather-card">
+      <div class="weather-topline">
+        <span class="label">Weather Forecast</span>
+        <select id="zoneSelect" aria-label="Select zone"></select>
+      </div>
+      <div class="weather-current">
+        <div class="weather-icon" id="weatherIcon" aria-hidden="true">✦</div>
+        <div>
+          <strong id="weatherName">--</strong>
+          <p id="weatherNote">Select a zone to view its current weather.</p>
+        </div>
+      </div>
+      <div class="forecast" id="forecast"></div>
+      <div class="weather-search">
+        <div class="weather-search-controls">
+          <label for="weatherSearch">
+            <span class="label">Find Weather</span>
+            <select id="weatherSearch" aria-label="Search locations by weather type"></select>
+          </label>
+          <button id="weatherSearchClear" type="button">Clear</button>
+        </div>
+        <p id="weatherSearchSummary" class="weather-search-summary">Search all locations by current or upcoming weather.</p>
+        <div class="weather-results" id="weatherResults" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Vanadiel time is fan-calculated from Earth time.</span>
+      <button id="compactToggle" type="button">Compact</button>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
